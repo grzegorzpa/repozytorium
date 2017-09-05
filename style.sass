@@ -1,0 +1,525 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700)
+
+$break-small: 767px
+$break-large: 1200px
+$bg-header: #313234
+$bg-gray: #313332
+$bg-icons: rgb(52, 152, 219)
+$bg-members-layer: rgba(0, 0, 0, 0.0)
+$bg-opacity: rgba(0, 0, 0, 0.5)
+$transform: scale(1.3)
+.ico
+	font-size: 50px
+	color: white 
+	border-radius: 10%
+	padding: 15px
+	width: 80px
+	text-align: center
+	
+=paragraf($position, $top, $left, $transform, $margin, $margin-right, $text-align, $color, $font-size)
+	position: $position
+	top: $top
+	left: $left
+	transform: $transform
+	margin: $margin
+	margin-right: $margin-right
+	text-align: $text-align
+	color: $color
+	font-size: $font-size
+
+=layer-a($position, $top, $left, $transform, $margin, $margin-right)
+	position: $position
+	top: $top
+	left: $left
+	transform: $transform
+	margin: $margin
+	margin-right: $margin-right	
+
+=respond($media)
+	@if $media == mobile
+		@media only screen and (max-width: $break-small) 
+			@content  
+	@else if $media == tablet
+		@media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) 
+			@content
+	@else if $media == desktop
+		@media only screen and (min-width: $break-large)
+			@content
+
+
+*
+	box-sizing: border-box
+
+body
+	margin: 0
+	font-family: 'Open Sans', sans-serif
+
+.container 
+	width: 100%
+	max-width: 1200px
+	margin: 0 auto
+
+header
+	background-color: $bg-header
+	height: 55px
+	nav
+		img 
+			padding: 10px 0
+		ul 
+			margin: 0
+			list-style-type: none
+			float: right	
+			li 
+				display: inline-block
+				a 
+					line-height: 55px
+					padding: 0 20px
+					display: block
+					color: #ffffff
+					text-decoration: none
+					text-transform: uppercase
+					+respond(desktop)
+						&:hover
+							background-color: #ccc					
+	+respond(mobile)
+		display: block
+		text-align: center
+		position: relative	
+		nav 
+			ul 
+				padding-left: 0
+				float: none
+				background-color: $bg-header
+				li 
+					display: block
+					a:active 
+						background-color: #ccc
+	+respond(tablet)
+		nav ul li a:active 
+			background-color: #ccc
+.hero 
+	width: 100%
+	height: 100vh
+	padding: 20vh 0 0 0 
+	text-align: center
+	background: url(https://images.pexels.com/photos/39245/zebra-stripes-black-and-white-zoo-39245.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb)
+	background-size: cover
+	background-position: center
+	overflow: hidden
+	background-attachment: fixed
+	+respond(mobile)
+		position: relative
+		top: 215px
+		height: 100vh
+
+.slogan 
+	margin: 10px
+	padding: 15px
+	font-size: 20px
+	color: white
+	background-color: rgba(50, 50, 50, 0.5)
+	float: right
+	max-width: 800px
+	text-transform: uppercase
+	font-weight: 700
+	p 
+		opacity: 0.7
+		font-weight: 300
+		font-size: 20px
+		letter-spacing: 1px
+		text-align: left
+	+respond(mobile)
+		p
+			width: 100%
+			margin: 0
+			text-align: center
+	
+.row:before, 
+.row:after 
+	content: ""
+	display: table
+	clear: both
+
+[class*='col-']
+	float: left
+	min-height: 1px
+	padding: 15px
+
+.col-1 
+	width: 8.33%
+.col-2 
+	width: 16.66%
+.col-3 
+	width: 25%
+.col-4 
+	width: 33.33%
+.col-5 
+	width: 41.66%
+.col-6 
+	width: 50%
+.col-7 
+	width: 58.33%
+.col-8 
+	width: 66.66%
+.col-9 
+	width: 75%
+.col-10 
+	width: 83.33%
+.col-11 
+	width: 91.66%
+.col-12 
+	width: 100%
++respond(mobile)
+	.col-m-1 
+		width: 8.33%
+	.col-m-2 
+		width: 16.66%
+	.col-m-3 
+		width: 25%
+	.col-m-4 
+		width: 33.33%
+	.col-m-5 
+		width: 41.66%
+	.col-m-6 
+		width: 50%
+	.col-m-7 
+		width: 58.33%
+	.col-m-8 
+		width: 66.66%
+	.col-m-9 
+		width: 75%
+	.col-m-10 
+		width: 83.33%
+	.col-m-11 
+		width: 91.66%
+	.col-m-12 
+		width: 100%
++respond(tablet)
+	.col-s-1 
+		width: 8.33%
+	.col-s-2 
+		width: 16.66%
+	.col-s-3 
+		width: 25%
+	.col-s-4 
+		width: 33.33%
+	.col-s-5 
+		width: 41.66%
+	.col-s-6 
+		width: 50%
+	.col-s-7 
+		width: 58.33%
+	.col-s-8 
+		width: 66.66%
+	.col-s-9 
+		width: 75%
+	.col-s-10 
+		width: 83.33%
+	.col-s-11 
+		width: 91.66%
+	.col-s-12 
+		width: 100%
+
+.col-offset-0 
+	margin-left: 0%
+.col-offset-1 
+	margin-left: 8.33%
+.col-offset-2 
+	margin-left: 16.66%
+.col-offset-3 
+	margin-left: 25%
+.col-offset-4 
+	margin-left: 33.33%
+.col-offset-5 
+	margin-left: 41.66%
+.col-offset-6 
+	margin-left: 50%
+.col-offset-7 
+	margin-left: 58.33%
+.col-offset-8 
+	margin-left: 66.66%
+.col-offset-9 
+	margin-left: 75%
+.col-offset-10 
+	margin-left: 83.33%
+.col-offset-11 
+	margin-left: 91.66%
+
+.icons .fa-cogs, 
+.icons .fa-globe 
+	@extend .ico
+	background-color: $bg-gray
+	+respond(desktop)
+		&:hover
+			background-color: $bg-icons
+			cursor: pointer
+	+respond(mobile)
+		&:active
+			background-color: $bg-icons
+			cursor: pointer	
+	+respond(tablet)
+		&:active
+			background-color: $bg-icons
+			cursor: pointer	
+
+.icons .fa-laptop
+	@extend .ico
+	background-color: $bg-icons
+	+respond(desktop)
+		&:hover
+			background-color: $bg-gray
+			cursor: pointer
+	+respond(mobile)
+		&:active
+			background-color: $bg-gray
+			cursor: pointer	
+	+respond(tablet)
+		&:active
+			background-color: $bg-gray
+			cursor: pointer	
+
+.icons .row	.col-m-12
+	&:first-child 
+		margin-top: 0
+	+respond(mobile)	
+		&:first-child 
+			margin-top: 200px
+	+respond(tablet)
+		&:first-child 
+			margin-top: 0
+	
+div h3 
+	text-transform: uppercase
+
+section .container
+	margin: 50px auto
+	text-align: center
+	.row .col-12 h1 
+		text-transform: uppercase
+
+.gallery 
+	box-shadow: 2px 2px 20px $bg-header
+	.col-2 
+		position: relative
+		height: 250px
+		padding: 0  
+		img 
+			width: 100%
+			height: 100%
+			object-fit: cover
+=layero()
+	position: absolute
+	top: 0
+	width: 100%
+	height: 100%
+	transition: 0.65s
+
+.layer 
+	+respond(desktop)
+		+layero()
+		background-color: $bg-opacity
+		opacity: 0
+		&:hover
+			opacity: 1
+	div 
+		+layer-a ( absolute, 50%, 50%, translate(-50%, -50%), 0, -50%) 
+	span 
+		cursor: pointer
+	+respond(tablet)
+		+layero()
+		background-color: $bg-members-layer	
+		opacity: 1
+	+respond(mobile)
+		+layero()
+		opacity: 1
+		transition: 0.65s
+
+			
+
+
+.workers 
+	margin-top: 100px
+	margin-bottom: 120px
+	.col-3 
+		div 
+			width: 100%
+			height: auto
+			padding-top: 100%
+			position: relative
+			.team 
+				width: 100%
+				padding-top: 100%
+				position: absolute
+				border-radius: 50%
+				top: 0
+				bottom: 0
+				left: 0
+				right: 0
+				&:hover 
+					opacity: 1
+		img 
+			width: 100%
+			height: 100%
+			border-radius: 50%
+			object-fit: cover
+			position: absolute
+			top: 0
+			left: 0
+			bottom: 0
+			right: 0
+			filter: grayscale(100%) 
+
+=memberso()
+	width: 100%
+	height: 100%
+	position: absolute
+	top: 0
+	transition: 0.65s
+	transform: translate(0%,-100%)
+	border-radius: 50%	
+	
+
+.members 
+	+respond(desktop)
+		+memberso()
+		background-color: $bg-opacity
+		opacity: 0
+		&:hover 
+			opacity: 1			
+	p 
+		+paragraf( absolute, 50%, 50%, translate(-50%, -50%), 0, -50%, center, white, 25px )
+	+respond(tablet)
+		+memberso()
+		background-color: $bg-members-layer
+		opacity: 1
+	+respond(mobile)
+		+memberso()
+		background-color: $bg-members-layer
+		opacity: 1
+
+.tablet img 
+	width: 100%
+	max-width: 300px
+	line-height: 300px
+	+respond(mobile) 
+		display: none
+	+respond(tablet)
+		width: 100%
+		max-width: 300px
+		line-height: 300px
+
+.promotion 
+	background: url(https://image.freepik.com/free-vector/zebra-print_7399.jpg) 0/cover
+	background-attachment: fixed
+	box-shadow: 2px 2px 20px $bg-header
+	color: $bg-icons
+	font-size: 20px
+	position: relative
+	.container .col-8  
+		h2 
+			color: $bg-icons
+			font-weight: bold
+			text-transform: uppercase
+			text-shadow: 2px 2px 5px rgba(50, 50, 50, 0.9)
+			letter-spacing: 2px
+		.col-6 
+			color: black
+			background-color: #ffffff
+			box-shadow: 2px 10px 25px $bg-header
+
+.container .numbers .col-3 
+	h2 
+		color: rgb(52, 152, 219)
+		text-shadow: 1px 1px 5px rgba(50, 50, 50, 0.7)
+		font-size: 40px
+		+respond(desktop)
+			&:hover 
+				transform: scale(1.5)
+				transition: 0.35s
+		+respond(tablet)
+			&:active
+				transform: scale(1.5)
+				transition: 0.35s
+		+respond(mobile)
+			&:active
+				transform: scale(1.5)
+				transition: 0.35s
+	p 
+		word-spacing: 4px
+
+.stopka 
+	color: white
+	background-color: rgba(50, 50, 50, 0.9)
+	+respond(mobile)
+		text-align: center	
+	h2
+		&:after 
+			content: "-----------"
+			letter-spacing: -.1em	
+		+respond(mobile)	
+			&:before,
+			&:after 
+				content: "-----------" 
+				letter-spacing: -.1em
+
+.stopka .container 
+	.col-4 h2 
+		text-align: left
+		text-shadow: 2px 2px 20px $bg-header
+	+respond(mobile)
+		.col-m-12	h2
+			text-align: center
+.contact 
+	position: relative
+	display: inline-block
+	margin: 0
+	div 
+		margin: 0
+		padding: 0
+	p 
+		margin: 0
+	.row 
+		.col-4 
+			text-align: right
+		.col-8 
+			text-align: left
+			padding-left: 30px
+
+.social 
+	.fa 
+		height: 100%
+		width: 100%
+		border: 0
+		color: #FFFFFF
+		border-radius: 50%
+		margin: 0
+		cursor: pointer
+		font-size: 38px
+		text-align: center
+		line-height: 80px
+		+respond(desktop)
+			&:hover 
+				transform: $transform
+				color: $bg-icons
+		+respond(mobile)
+			&:active 
+				transform: $transform
+				color: $bg-icons
+		+respond(tablet)
+			&:active
+				transform: $transform
+				color: $bg-icons
+	.col-2 
+		margin: 0
+		padding: 0 
+	p 
+		margin: 0
+
+footer .row .col-12 
+	text-align: center
+	background-color: rgba(50, 50, 50, 0.8)
+	line-height: 20px
+	padding: 5px
+
+
+
